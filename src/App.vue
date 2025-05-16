@@ -37,16 +37,7 @@ function toggleDark() {
 </script>
 
 <template>
-  <div :class="{ 'dark': isDark }" class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-    <div class="flex justify-end p-4">
-      <button @click="toggleDark" class="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors">
-        {{ isDark ? '🌙 Dark' : '☀️ Light' }}
-      </button>
-    </div>
-    <EmojiBar @mood-selected="handleMoodSelected" />
-    <CalendarGrid :moods-by-date="moodsByDate" />
-    <MoodStats :moods-by-date="moodsByDate" />
-  </div>
+  <router-view />
 </template>
 
 <style scoped>
