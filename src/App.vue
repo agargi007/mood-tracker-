@@ -3,6 +3,7 @@
 <script setup>
 import EmojiBar from './components/EmojiBar.vue'
 import CalendarGrid from './components/CalendarGrid.vue'
+import MoodStats from './components/MoodStats.vue'
 import { ref, watch, onMounted } from 'vue'
 
 const moodsByDate = ref({})
@@ -32,6 +33,7 @@ watch(moodsByDate, (val) => {
   <div>
     <EmojiBar @mood-selected="handleMoodSelected" />
     <CalendarGrid :moods-by-date="moodsByDate" />
+    <MoodStats :moods-by-date="moodsByDate" />
   </div>
 </template>
 
