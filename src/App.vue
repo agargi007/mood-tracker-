@@ -1,6 +1,8 @@
 
+</script>
 <script setup>
 import EmojiBar from './components/EmojiBar.vue'
+import CalendarGrid from './components/CalendarGrid.vue'
 
 function handleMoodSelected(mood) {
   // For now, just log the selected mood
@@ -11,7 +13,7 @@ function handleMoodSelected(mood) {
 <template>
   <div>
     <EmojiBar @mood-selected="handleMoodSelected" />
-    <!-- You can add the calendar and other components below -->
+    <CalendarGrid />
   </div>
 </template>
 
