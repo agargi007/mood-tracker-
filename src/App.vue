@@ -3,17 +3,35 @@
 <script setup>
 import EmojiBar from './components/EmojiBar.vue'
 import CalendarGrid from './components/CalendarGrid.vue'
+import { ref, watch, onMounted } from 'vue'
+
+const moodsByDate = ref({})
+
+// Load moods from localStorage on mount
+onMounted(() => {
+  const stored = localStorage.getItem('moodsByDate')
+  if (stored) {
+    moodsByDate.value = JSON.parse(stored)
+  }
+})
 
 function handleMoodSelected(mood) {
-  // For now, just log the selected mood
-  console.log('Selected mood:', mood)
+  const today = new Date()
+  const key = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+  moodsByDate.value[key] = mood.emoji
+  localStorage.setItem('moodsByDate', JSON.stringify(moodsByDate.value))
 }
+
+// Watch for changes and persist
+watch(moodsByDate, (val) => {
+  localStorage.setItem('moodsByDate', JSON.stringify(val))
+}, { deep: true })
 </script>
 
 <template>
   <div>
     <EmojiBar @mood-selected="handleMoodSelected" />
-    <CalendarGrid />
+    <CalendarGrid :moods-by-date="moodsByDate" />
   </div>
 </template>
 

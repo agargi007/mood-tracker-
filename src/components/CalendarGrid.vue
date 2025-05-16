@@ -10,16 +10,26 @@
       <div
         v-for="date in daysInMonth"
         :key="date"
-        class="border rounded-lg h-16 flex items-center justify-center bg-white dark:bg-gray-800 shadow-sm"
+        class="border rounded-lg h-16 flex items-center justify-center bg-white dark:bg-gray-800 shadow-sm relative"
       >
         <span class="text-lg font-medium">{{ date }}</span>
+        <span v-if="moodsByDate[dateKey(date)]" class="absolute bottom-1 right-1 text-2xl">
+          {{ moodsByDate[dateKey(date)] }}
+        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, toRefs } from 'vue'
+const props = defineProps({
+  moodsByDate: {
+    type: Object,
+    default: () => ({})
+  }
+})
+const { moodsByDate } = toRefs(props)
 
 const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const today = new Date()
@@ -33,6 +43,10 @@ const daysInMonth = Array.from(
   (_, i) => i + 1
 )
 const blanks = computed(() => Array.from({ length: startDay }, (_, i) => i))
+
+function dateKey(date) {
+  return `${year}-${month + 1}-${date}`
+}
 </script>
 
 <style scoped>
