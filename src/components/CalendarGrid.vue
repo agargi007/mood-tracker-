@@ -4,8 +4,8 @@
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500 dark:text-gray-300">
         {{ day }}
       </div>
-      <template v-for="blank in blanks">
-        <div :key="'blank-' + blank"></div>
+      <template v-for="blank in blanks" :key="'blank-' + blank">
+        <div></div>
       </template>
       <div
         v-for="date in daysInMonth"
