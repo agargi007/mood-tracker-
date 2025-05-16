@@ -1,6 +1,6 @@
 
-import EmojiBar from './components/EmojiBar.vue'
 <script setup>
+import EmojiBar from './components/EmojiBar.vue'
 import CalendarGrid from './components/CalendarGrid.vue'
 import MoodStats from './components/MoodStats.vue'
 import { ref, watch, onMounted } from 'vue'
