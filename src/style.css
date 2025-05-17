@@ -44,14 +44,15 @@
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Montserrat:wght@400;500&family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
   font-family: 'Quicksand', 'Montserrat', 'Playfair Display', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  color-scheme: light;
   color: #213547;
-  background: linear-gradient(120deg, #fceabb 0%, #f8bfae 50%, #b5ead7 100%);
+  background: linear-gradient(135deg, #ffe6e6 0%, #fffbe6 40%, #e6fff7 80%, #e6e6ff 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +72,10 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: none;
+  background: linear-gradient(135deg, #ffe6e6 0%, #fffbe6 40%, #e6fff7 80%, #e6e6ff 100%);
+  background-attachment: fixed;
+  color: #213547;
+  font-family: 'Quicksand', 'Montserrat', 'Playfair Display', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -86,7 +90,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -109,19 +113,3 @@ button:focus-visible {
   text-align: center;
 }
 
-/* Remove dark mode overrides and force pastel summer theme */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
-:root {
-  font-family: 'Quicksand', 'Montserrat', 'Playfair Display', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
