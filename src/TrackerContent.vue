@@ -28,7 +28,7 @@ onMounted(() => {
 })
 
 function handleMoodSelected(mood) {
-  selectedMood.value = mood.emoji
+  selectedMood.value = mood
 }
 
 function editMoodForDate(dateKey) {

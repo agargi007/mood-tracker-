@@ -16,12 +16,11 @@
 import { defineEmits } from 'vue'
 const emit = defineEmits(['mood-selected'])
 const moods = [
-  { emoji: '😊', label: 'Happy' },
-  { emoji: '😢', label: 'Sad' },
-  { emoji: '😡', label: 'Angry' },
-  { emoji: '😱', label: 'Surprised' },
-  { emoji: '😍', label: 'Loved' },
-  { emoji: '😐', label: 'Neutral' },
+  { emoji: '🤩', label: 'Very Happy', value: 'veryhappy' },
+  { emoji: '😊', label: 'Happy', value: 'happy' },
+  { emoji: '😐', label: 'Neutral', value: 'neutral' },
+  { emoji: '😢', label: 'Sad', value: 'sad' },
+  { emoji: '😡', label: 'Angry', value: 'angry' },
 ]
 function selectMood(mood) {
   emit('mood-selected', mood)

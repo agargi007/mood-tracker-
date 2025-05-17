@@ -10,13 +10,13 @@
       <div
         v-for="date in daysInMonth"
         :key="date"
-        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center bg-white/80 shadow-md relative cursor-pointer hover:scale-105 transition-all duration-150"
+        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center shadow-md relative cursor-pointer hover:scale-105 transition-all duration-150"
         @click="editDay(date)"
-        style="min-width: 3.5rem; min-height: 3.5rem; font-size: 1.25rem;"
+        :style="cellBgStyle(moodsByDate[dateKey(date)])"
       >
-        <span class="font-medium select-none">{{ date }}</span>
-        <span v-if="moodsByDate[dateKey(date)]" class="absolute bottom-1 right-1 text-2xl select-none">
-          {{ moodsByDate[dateKey(date)] }}
+        <span class="font-medium select-none" style="font-family: 'Quicksand', 'Montserrat', 'Playfair Display', Arial, sans-serif;">{{ date }}</span>
+        <span v-if="moodsByDate[dateKey(date)]" class="absolute inset-0 flex items-center justify-center text-3xl select-none">
+          {{ moodsByDate[dateKey(date)]?.emoji }}
         </span>
       </div>
     </div>
@@ -24,6 +24,33 @@
 </template>
 
 <script setup>
+// Color mapping for moods
+const moodColors = {
+  veryhappy: '#7be881', // green
+  happy: '#b2f2a5',    // light green
+  neutral: '#ffe066',  // yellow
+  sad: '#74c0fc',      // blue
+  angry: '#ff6b6b',    // red
+}
+
+function cellBgStyle(moodObj) {
+  if (!moodObj) {
+    return {
+      background: 'rgba(255,255,255,0.85)',
+      minWidth: '3.5rem',
+      minHeight: '3.5rem',
+      fontSize: '1.25rem',
+    }
+  }
+  let color = moodColors[moodObj.value] || 'rgba(255,255,255,0.85)';
+  return {
+    background: color,
+    minWidth: '3.5rem',
+    minHeight: '3.5rem',
+    fontSize: '1.25rem',
+    transition: 'background 0.3s',
+  }
+}
 import { computed, toRefs } from 'vue'
 const props = defineProps({
   moodsByDate: {
