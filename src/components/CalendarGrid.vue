@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8">
-    <div class="grid grid-cols-7 gap-2 w-full max-w-5xl mx-auto text-center">
+  <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 animate-fade-in-calendar">
+    <div class="grid grid-cols-7 gap-2 w-full max-w-5xl mx-auto text-center animate-slide-up-calendar">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
       </div>
@@ -10,12 +10,13 @@
       <div
         v-for="date in daysInMonth"
         :key="date"
-        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center shadow-md relative cursor-pointer hover:scale-105 transition-all duration-150"
+        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center shadow-md relative cursor-pointer hover:scale-110 focus:scale-110 transition-all duration-200 animate-pop-in-calendar"
         @click="editDay(date)"
         :style="cellBgStyle(moodsByDate[dateKey(date)])"
+        tabindex="0"
       >
         <span class="font-medium select-none" style="font-family: 'Quicksand', 'Montserrat', 'Playfair Display', Arial, sans-serif;">{{ date }}</span>
-        <span v-if="moodsByDate[dateKey(date)]" class="absolute inset-0 flex items-center justify-center text-3xl select-none">
+        <span v-if="moodsByDate[dateKey(date)]" class="absolute inset-0 flex items-center justify-center text-3xl select-none animate-emoji-bounce-calendar">
           {{ moodsByDate[dateKey(date)]?.emoji }}
         </span>
       </div>
@@ -92,5 +93,42 @@ function editDay(date) {
 
 .grid {
   background: transparent;
+}
+
+/* Fade-in for calendar container */
+.animate-fade-in-calendar {
+  animation: fade-in-calendar 1.1s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+@keyframes fade-in-calendar {
+  0% { opacity: 0; transform: translateY(40px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Slide up for grid */
+.animate-slide-up-calendar {
+  animation: slide-up-calendar 1.2s 0.2s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+@keyframes slide-up-calendar {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Pop-in for each calendar cell */
+.animate-pop-in-calendar {
+  animation: pop-in-calendar 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+@keyframes pop-in-calendar {
+  0% { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* Emoji bounce for mood emoji in cell */
+.animate-emoji-bounce-calendar {
+  animation: emoji-bounce-calendar 2.2s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+@keyframes emoji-bounce-calendar {
+  0% { transform: translateY(0) scale(1.1) rotate(-6deg); filter: brightness(1.1); }
+  50% { transform: translateY(-10px) scale(1.18) rotate(6deg); filter: brightness(1.2); }
+  100% { transform: translateY(0) scale(1.1) rotate(-6deg); filter: brightness(1.1); }
 }
 </style>

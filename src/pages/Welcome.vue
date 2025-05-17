@@ -138,17 +138,6 @@
   0% { transform: translateY(0) scale(1); opacity: 0.7; }
   100% { transform: translateY(-20px) scale(1.1) rotate(-12deg); opacity: 1; }
 }
-  min-height: 100vh;
-  width: 100vw;
-  background-image: url('../assets/pastel-bg-flowers.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 /* Emoji Parade Animation */
 .emoji-parade {
