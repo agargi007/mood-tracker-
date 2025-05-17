@@ -2,14 +2,17 @@
   <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
     <div class="flex flex-col items-center justify-center w-full min-h-screen">
       <!-- Animated Heading -->
-      <h1 class="welcome-title font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight text-center drop-shadow-lg animate-gradient-text animate-fade-in">Welcome to Mood Tracker</h1>
+      <h1 class="welcome-title font-display text-center font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
+        style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1;">
+        Welcome to Mood Tracker
+      </h1>
       <!-- Animated Emoji Parade (centered, larger, more visible) -->
-      <div class="emoji-parade flex gap-6 md:gap-10 mb-12 md:mb-16 justify-center animate-parade">
-        <span class="emoji-item text-6xl sm:text-7xl md:text-8xl lg:text-9xl mood-emoji animate-bounce-float" style="animation-delay:0s">🤩</span>
-        <span class="emoji-item text-6xl sm:text-7xl md:text-8xl lg:text-9xl mood-emoji animate-bounce-float" style="animation-delay:0.12s">😊</span>
-        <span class="emoji-item text-6xl sm:text-7xl md:text-8xl lg:text-9xl mood-emoji animate-bounce-float" style="animation-delay:0.24s">😐</span>
-        <span class="emoji-item text-6xl sm:text-7xl md:text-8xl lg:text-9xl mood-emoji animate-bounce-float" style="animation-delay:0.36s">😢</span>
-        <span class="emoji-item text-6xl sm:text-7xl md:text-8xl lg:text-9xl mood-emoji animate-bounce-float" style="animation-delay:0.48s">😡</span>
+      <div class="emoji-parade flex gap-4 sm:gap-8 md:gap-12 mb-12 md:mb-16 justify-center animate-parade">
+        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0s">🤩</span>
+        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.12s">😊</span>
+        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.24s">😐</span>
+        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.36s">😢</span>
+        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.48s">😡</span>
       </div>
       <!-- Animated Button -->
       <router-link to="/tracker">
