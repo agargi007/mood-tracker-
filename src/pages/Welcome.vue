@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
+  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden;">
     <div class="flex flex-col items-center justify-center w-full min-h-screen">
       <!-- Animated Heading -->
       <h1 class="welcome-title font-display text-center font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
