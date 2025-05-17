@@ -97,8 +97,8 @@ function editDay(date) {
 
 /* Restrict calendar grid to a fixed box size */
 .calendar-box {
-  width: 25cm;
-  height: 25cm;
+  width: 20cm;
+  height: 20cm;
   max-width: 98vw;
   max-height: 70vw;
   min-width: 320px;

@@ -5,7 +5,7 @@
       <div class="flex-1 flex flex-col justify-center w-full">
         <CalendarGrid :moods-by-date="moodsByDate" :on-edit="editMoodForDate" :selected-mood="selectedMood" :is-dark="false" />
       </div>
-      <MoodStats :moods-by-date="moodsByDate" />
+      <!-- <MoodStats :moods-by-date="moodsByDate" /> -->
     </div>
   </div>
 </template>
