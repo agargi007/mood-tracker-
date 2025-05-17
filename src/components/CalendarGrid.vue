@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 animate-fade-in-calendar">
-    <div class="grid grid-cols-7 gap-2 w-full max-w-5xl mx-auto text-center animate-slide-up-calendar">
+    <div class="grid grid-cols-7 gap-2 mx-auto text-center animate-slide-up-calendar calendar-box">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
       </div>
@@ -10,12 +10,12 @@
       <div
         v-for="date in daysInMonth"
         :key="date"
-        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center shadow-md relative cursor-pointer hover:scale-110 focus:scale-110 transition-all duration-200 animate-pop-in-calendar"
+        class="border border-gray-300 rounded-lg aspect-square flex items-center justify-center shadow-md relative cursor-pointer hover:scale-110 focus:scale-110 transition-all duration-200 animate-pop-in-calendar bg-white/80"
         @click="editDay(date)"
         :style="cellBgStyle(moodsByDate[dateKey(date)])"
         tabindex="0"
       >
-        <span class="font-medium select-none" style="font-family: 'Quicksand', 'Montserrat', 'Playfair Display', Arial, sans-serif;">{{ date }}</span>
+        <span class="font-bold select-none text-gray-700 text-lg md:text-xl lg:text-2xl" style="font-family: 'Quicksand', 'Montserrat', 'Playfair Display', Arial, sans-serif;">{{ date }}</span>
         <span v-if="moodsByDate[dateKey(date)]" class="absolute inset-0 flex items-center justify-center text-3xl select-none animate-emoji-bounce-calendar">
           {{ moodsByDate[dateKey(date)]?.emoji }}
         </span>
@@ -93,6 +93,21 @@ function editDay(date) {
 
 .grid {
   background: transparent;
+}
+
+/* Restrict calendar grid to a fixed box size */
+.calendar-box {
+  width: 25cm;
+  height: 25cm;
+  max-width: 98vw;
+  max-height: 70vw;
+  min-width: 320px;
+  min-height: 320px;
+  box-sizing: border-box;
+  background: transparent;
+  align-items: center;
+  justify-items: center;
+  margin: 0 auto;
 }
 
 /* Fade-in for calendar container */
