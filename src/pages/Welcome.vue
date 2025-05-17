@@ -1,25 +1,10 @@
 <template>
   <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
-    <div class="flex flex-col items-center justify-center w-full min-h-screen">
-      <!-- Animated Heading -->
-      <div class="flex flex-col items-center justify-center w-full h-full flex-1">
-        <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
-          style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
-          Welcome to Mood Tracker
-        </h1>
-        <!-- Animated Emoji Parade (centered, larger, more visible) -->
-        <div class="emoji-parade flex gap-4 sm:gap-8 md:gap-12 mb-12 md:mb-16 justify-center animate-parade">
-          <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0s">🤩</span>
-          <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.12s">😊</span>
-          <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.24s">😐</span>
-          <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.36s">😢</span>
-          <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0.48s">😡</span>
-        </div>
-        <!-- Animated Button -->
-        <router-link to="/tracker">
-          <button class="welcome-btn px-8 py-4 rounded-2xl bg-pink-400/90 text-white text-2xl sm:text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in">Get Started</button>
-        </router-link>
-      </div>
+    <div class="flex flex-col items-center justify-center w-full h-full flex-1">
+      <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
+        style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
+        Welcome to Mood Tracker
+      </h1>
       <!-- Animated Emoji Parade (centered, larger, more visible) -->
       <div class="emoji-parade flex gap-4 sm:gap-8 md:gap-12 mb-12 md:mb-16 justify-center animate-parade">
         <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:0s">🤩</span>
