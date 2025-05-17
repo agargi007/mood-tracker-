@@ -1,3 +1,5 @@
+
+
 /* Summer pastel background for tracker page */
 .summer-bg {
   background-image: url('./assets/pastel-bg-flowers.png');
@@ -120,4 +122,19 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+:root {
+  font-family: 'Quicksand', 'Montserrat', 'Playfair Display', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
