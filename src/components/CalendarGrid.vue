@@ -1,5 +1,10 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 animate-fade-in-calendar">
+    <div class="flex items-center justify-center mb-4 gap-4">
+      <button @click="prevMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8592;</button>
+      <span class="text-xl md:text-2xl font-bold" style="font-family: 'Montserrat', 'Quicksand', 'Playfair Display', Arial, sans-serif;">{{ monthName }} {{ displayYear }}</span>
+      <button @click="nextMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8594;</button>
+    </div>
     <div class="grid grid-cols-7 gap-2 mx-auto text-center animate-slide-up-calendar calendar-box">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
@@ -34,6 +39,66 @@ const moodColors = {
   angry: '#ff6b6b',    // red
 }
 
+import { computed, toRefs, ref } from 'vue'
+const props = defineProps({
+  moodsByDate: {
+    type: Object,
+    default: () => ({})
+  },
+  onEdit: Function,
+  selectedMood: String
+})
+const { moodsByDate, onEdit, selectedMood } = toRefs(props)
+
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const today = new Date()
+const currentYear = today.getFullYear()
+const currentMonth = today.getMonth()
+
+const displayYear = ref(currentYear)
+const displayMonth = ref(currentMonth)
+
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+]
+const monthName = computed(() => monthNames[displayMonth.value])
+
+const firstDayOfMonth = computed(() => new Date(displayYear.value, displayMonth.value, 1))
+const startDay = computed(() => firstDayOfMonth.value.getDay())
+const daysInMonth = computed(() => Array.from(
+  { length: new Date(displayYear.value, displayMonth.value + 1, 0).getDate() },
+  (_, i) => i + 1
+))
+const blanks = computed(() => Array.from({ length: startDay.value }, (_, i) => i))
+
+function dateKey(date) {
+  return `${displayYear.value}-${displayMonth.value + 1}-${date}`
+}
+
+function editDay(date) {
+  if (onEdit && typeof onEdit.value === 'function') {
+    onEdit.value(dateKey(date))
+  }
+}
+
+function prevMonth() {
+  if (displayMonth.value === 0) {
+    displayMonth.value = 11
+    displayYear.value--
+  } else {
+    displayMonth.value--
+  }
+}
+function nextMonth() {
+  if (displayMonth.value === 11) {
+    displayMonth.value = 0
+    displayYear.value++
+  } else {
+    displayMonth.value++
+  }
+}
+
 function cellBgStyle(moodObj) {
   if (!moodObj) {
     return {
@@ -50,41 +115,6 @@ function cellBgStyle(moodObj) {
     minHeight: '3.5rem',
     fontSize: '1.25rem',
     transition: 'background 0.3s',
-  }
-}
-import { computed, toRefs } from 'vue'
-const props = defineProps({
-  moodsByDate: {
-    type: Object,
-    default: () => ({})
-  },
-  onEdit: Function,
-  selectedMood: String
-})
-const { moodsByDate, onEdit, selectedMood } = toRefs(props)
-
-const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const today = new Date()
-const year = today.getFullYear()
-const month = today.getMonth()
-
-const firstDayOfMonth = new Date(year, month, 1)
-const startDay = firstDayOfMonth.getDay()
-const daysInMonth = Array.from(
-  { length: new Date(year, month + 1, 0).getDate() },
-  (_, i) => i + 1
-)
-const blanks = computed(() => Array.from({ length: startDay }, (_, i) => i))
-
-
-
-function dateKey(date) {
-  return `${year}-${month + 1}-${date}`
-}
-
-function editDay(date) {
-  if (onEdit && typeof onEdit.value === 'function') {
-    onEdit.value(dateKey(date))
   }
 }
 </script>

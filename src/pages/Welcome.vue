@@ -1,6 +1,8 @@
 <template>
-  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
-    <div class="flex flex-col items-center justify-center w-full h-full flex-1">
+  <div class="welcome-summer-bg min-h-screen min-w-screen w-screen h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <!-- Animated background video effect -->
+    <div class="absolute inset-0 z-0 animated-bg-gradient"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1">
       <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
         style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
         Welcome to Mood Tracker
@@ -19,8 +21,8 @@
       </router-link>
     </div>
     <!-- Optional: Animated SVG Sparkles -->
-    <svg class="absolute left-8 top-8 animate-spin-slow opacity-30 w-24 h-24 text-yellow-300 hidden md:block" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 8"/></svg>
-    <svg class="absolute right-8 bottom-8 animate-bounce opacity-20 w-20 h-20 text-pink-400 hidden md:block" fill="none" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="16" fill="currentColor"/></svg>
+    <svg class="absolute left-8 top-8 animate-spin-slow opacity-30 w-24 h-24 text-yellow-300 hidden md:block z-20" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 8"/></svg>
+    <svg class="absolute right-8 bottom-8 animate-bounce opacity-20 w-20 h-20 text-pink-400 hidden md:block z-20" fill="none" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="16" fill="currentColor"/></svg>
   </div>
 </template>
 
@@ -29,6 +31,23 @@
 </script>
 
 <style scoped>
+/* Animated background gradient video effect */
+.animated-bg-gradient {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: linear-gradient(120deg, #ffe6e6, #fffbe6, #e6fff7, #e6e6ff, #ffb6b9, #b5ead7, #c9c9ff, #ffdac1);
+  background-size: 400% 400%;
+  animation: gradient-move-bg 18s ease-in-out infinite alternate;
+  filter: blur(2px) brightness(1.08) saturate(1.1);
+}
+@keyframes gradient-move-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 /* Font imports are now global in style.css */
 
 /* Fade-in animation for heading */
