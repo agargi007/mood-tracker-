@@ -1,22 +1,19 @@
 <template>
-  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
+  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="background: linear-gradient(120deg, #fceabb 0%, #f8bfae 50%, #b5ead7 100%);">
     <div class="flex flex-col items-center justify-center w-full h-full min-h-screen">
-      <!-- Animated Emoji Parade -->
-      <div class="emoji-parade flex gap-8 mb-12 md:mb-16">
-        <span v-for="(emoji, i) in emojis" :key="i" class="emoji-item text-7xl md:text-9xl mood-emoji" :style="{ animationDelay: `${i * 0.18}s` }">{{ emoji }}</span>
-      </div>
       <!-- Animated Heading -->
-      <h1 class="welcome-title font-display text-6xl md:text-8xl font-extrabold mb-12 md:mb-16 text-gray-800 tracking-tight text-center drop-shadow-lg animate-gradient-text">Welcome to Mood Tracker</h1>
-      <!-- Animated mood sparkles -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
-        <span class="mood-sparkle mood-sparkle-1">✨</span>
-        <span class="mood-sparkle mood-sparkle-2">🌈</span>
-        <span class="mood-sparkle mood-sparkle-3">💖</span>
-        <span class="mood-sparkle mood-sparkle-4">☀️</span>
+      <h1 class="welcome-title font-display text-6xl md:text-8xl font-extrabold mb-12 md:mb-16 text-gray-800 tracking-tight text-center drop-shadow-lg animate-gradient-text" style="color: #213547;">Welcome to Mood Tracker</h1>
+      <!-- Animated Emoji Parade (centered, larger, more visible) -->
+      <div class="emoji-parade flex gap-10 mb-16 md:mb-20 justify-center">
+        <span class="emoji-item text-8xl md:text-9xl mood-emoji" style="animation-delay:0s">🤩</span>
+        <span class="emoji-item text-8xl md:text-9xl mood-emoji" style="animation-delay:0.12s">😊</span>
+        <span class="emoji-item text-8xl md:text-9xl mood-emoji" style="animation-delay:0.24s">😐</span>
+        <span class="emoji-item text-8xl md:text-9xl mood-emoji" style="animation-delay:0.36s">😢</span>
+        <span class="emoji-item text-8xl md:text-9xl mood-emoji" style="animation-delay:0.48s">😡</span>
       </div>
       <!-- Animated Button -->
       <router-link to="/tracker">
-        <button class="welcome-btn px-8 py-4 rounded-xl bg-pink-400/90 text-white text-2xl md:text-3xl font-bold shadow-lg hover:bg-pink-500 transition">Get Started</button>
+        <button class="welcome-btn px-10 py-5 rounded-2xl bg-pink-400/90 text-white text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition">Get Started</button>
       </router-link>
     </div>
     <!-- Optional: Animated SVG Sparkles -->
@@ -26,23 +23,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const emojis = ref(['😊', '😢', '😡', '😱', '😍', '😐'])
+
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+/* Font imports are now global in style.css */
 
 /* Summer Pastel Background */
 .welcome-summer-bg {
 /* Mood Emoji Animation: bounce and float */
+/* Mood Emoji Animation: bounce and float */
 .mood-emoji {
   animation: emoji-bounce-float 2.5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.10));
 }
 @keyframes emoji-bounce-float {
-  0% { transform: translateY(0) scale(1.1) rotate(-8deg); filter: brightness(1.1); }
-  50% { transform: translateY(-18px) scale(1.18) rotate(8deg); filter: brightness(1.2); }
-  100% { transform: translateY(0) scale(1.1) rotate(-8deg); filter: brightness(1.1); }
+  0% { transform: translateY(0) scale(1.1) rotate(-8deg); filter: brightness(1.1) drop-shadow(0 4px 16px rgba(0,0,0,0.10)); }
+  50% { transform: translateY(-18px) scale(1.18) rotate(8deg); filter: brightness(1.2) drop-shadow(0 8px 24px rgba(0,0,0,0.13)); }
+  100% { transform: translateY(0) scale(1.1) rotate(-8deg); filter: brightness(1.1) drop-shadow(0 4px 16px rgba(0,0,0,0.10)); }
 }
 
 /* Animated Gradient Text for Heading */
