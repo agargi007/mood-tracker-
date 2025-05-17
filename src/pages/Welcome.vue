@@ -1,7 +1,7 @@
 <template>
-  <div class="welcome-summer-bg min-h-screen min-w-screen w-screen h-screen flex flex-col items-center justify-center relative overflow-hidden">
-    <!-- Animated background video effect -->
-    <div class="absolute inset-0 z-0 animated-bg-gradient"></div>
+  <div class="welcome-summer-bg min-h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
+    <!-- Animated full-page pastel gradient video effect -->
+    <div class="absolute inset-0 w-full h-full z-0 animated-bg-gradient"></div>
     <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1">
       <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
         style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
@@ -31,24 +31,25 @@
 </script>
 
 <style scoped>
-/* Animated background gradient video effect */
+/* Font imports are now global in style.css */
+
+/* Animated full-page pastel gradient video effect */
 .animated-bg-gradient {
   position: absolute;
   inset: 0;
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background: linear-gradient(120deg, #ffe6e6, #fffbe6, #e6fff7, #e6e6ff, #ffb6b9, #b5ead7, #c9c9ff, #ffdac1);
+  background: linear-gradient(120deg, #ffe6e6, #fffbe6, #e6fff7, #e6e6ff, #ffb6b9, #fcdff0, #b5ead7, #c9c9ff, #ffdac1);
   background-size: 400% 400%;
-  animation: gradient-move-bg 18s ease-in-out infinite alternate;
-  filter: blur(2px) brightness(1.08) saturate(1.1);
+  animation: gradient-move-bg 16s ease-in-out infinite alternate;
+  filter: blur(0px) brightness(1.08) saturate(1.1);
 }
 @keyframes gradient-move-bg {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-/* Font imports are now global in style.css */
 
 /* Fade-in animation for heading */
 .animate-fade-in {
