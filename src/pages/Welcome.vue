@@ -1,10 +1,10 @@
 <template>
-  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height: 100dvh; min-height: 100vh; height: 100dvh; height: 100vh;">
+  <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
     <div class="flex flex-col items-center justify-center w-full min-h-screen">
       <!-- Animated Heading -->
       <div class="flex flex-col items-center justify-center w-full h-full flex-1">
         <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
-          style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; width: 100vw; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 1em;">
+          style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
           Welcome to Mood Tracker
         </h1>
         <!-- Animated Emoji Parade (centered, larger, more visible) -->
