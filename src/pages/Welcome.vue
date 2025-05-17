@@ -1,18 +1,18 @@
 <template>
-  <div class="welcome-bg min-h-screen flex flex-col items-center justify-center relative overflow-hidden transition-colors">
+  <div class="welcome-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden transition-colors">
     <!-- Animated Emoji Parade -->
-    <div class="emoji-parade flex gap-4 mb-6">
-      <span v-for="(emoji, i) in emojis" :key="i" class="emoji-item text-4xl md:text-5xl" :style="{ animationDelay: `${i * 0.15}s` }">{{ emoji }}</span>
+    <div class="emoji-parade flex gap-6 mb-10 md:mb-14">
+      <span v-for="(emoji, i) in emojis" :key="i" class="emoji-item text-5xl md:text-7xl" :style="{ animationDelay: `${i * 0.15}s` }">{{ emoji }}</span>
     </div>
     <!-- Animated Heading -->
-    <h1 class="welcome-title text-4xl md:text-5xl font-bold mb-8 text-gray-800 dark:text-white">Welcome to Mood Tracker</h1>
+    <h1 class="welcome-title font-display text-5xl md:text-7xl font-extrabold mb-10 md:mb-14 text-gray-800 dark:text-white tracking-tight">Welcome to Mood Tracker</h1>
     <!-- Animated Button -->
     <router-link to="/tracker">
-      <button class="welcome-btn px-6 py-3 rounded-lg bg-blue-600 text-white text-lg font-semibold shadow hover:bg-blue-700 transition">Get Started</button>
+      <button class="welcome-btn px-8 py-4 rounded-xl bg-blue-600 text-white text-2xl md:text-3xl font-bold shadow-lg hover:bg-blue-700 transition">Get Started</button>
     </router-link>
     <!-- Optional: Animated SVG Sparkles -->
-    <svg class="absolute left-8 top-8 animate-spin-slow opacity-30 w-16 h-16 text-yellow-300 hidden md:block" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 8"/></svg>
-    <svg class="absolute right-8 bottom-8 animate-bounce opacity-20 w-12 h-12 text-pink-400 hidden md:block" fill="none" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="16" fill="currentColor"/></svg>
+    <svg class="absolute left-8 top-8 animate-spin-slow opacity-30 w-24 h-24 text-yellow-300 hidden md:block" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 8"/></svg>
+    <svg class="absolute right-8 bottom-8 animate-bounce opacity-20 w-20 h-20 text-pink-400 hidden md:block" fill="none" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="16" fill="currentColor"/></svg>
   </div>
 </template>
 
@@ -22,10 +22,18 @@ const emojis = ref(['😊', '😢', '😡', '😱', '😍', '😐'])
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+
 /* Animated Gradient Background */
 .welcome-bg {
+  min-height: 100vh;
+  width: 100vw;
   background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
   animation: gradient-move 8s ease-in-out infinite alternate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .dark .welcome-bg {
   background: linear-gradient(120deg, #232526 0%, #414345 100%);
@@ -61,6 +69,9 @@ const emojis = ref(['😊', '😢', '😡', '😱', '😍', '😐'])
   opacity: 0;
   transform: translateY(-30px);
   animation: title-fade-in 0.9s 0.7s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 @keyframes title-fade-in {
   to {
@@ -95,5 +106,10 @@ const emojis = ref(['😊', '😢', '😡', '😱', '😍', '😐'])
 @keyframes bounce {
   0% { transform: translateY(0); }
   100% { transform: translateY(-20px); }
+}
+
+/* Font utility for heading */
+.font-display {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 }
 </style>
