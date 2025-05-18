@@ -35,7 +35,7 @@
         </circle>
       </svg>
     </div>
-    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1" style="min-height:100vh;">
+    <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
       <transition name="fade-slide" appear>
         <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-center animate-gradient-text animate-fade-in"
           style="font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.1;">
