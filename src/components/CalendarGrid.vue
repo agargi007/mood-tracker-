@@ -6,7 +6,7 @@
       <button @click="nextMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8594;</button>
     </div>
     <MonthPicker v-if="showMonthPicker" :month="displayMonth" :year="displayYear" @select="onMonthYearSelect" @close="showMonthPicker = false" />
-    <div class="grid grid-cols-7 gap-1 mx-auto text-center animate-slide-up-calendar calendar-box-small">
+    <div class="grid grid-cols-7 gap-2 mx-auto text-center animate-slide-up-calendar calendar-box-medium">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
       </div>
@@ -110,17 +110,17 @@ function cellBgStyle(moodObj) {
   if (!moodObj) {
     return {
       background: 'rgba(255,255,255,0.85)',
-      minWidth: '2.1rem',
-      minHeight: '2.1rem',
-      fontSize: '1rem',
+      minWidth: '2.7rem',
+      minHeight: '2.7rem',
+      fontSize: '1.15rem',
     }
   }
   let color = moodColors[moodObj.value] || 'rgba(255,255,255,0.85)';
   return {
     background: color,
-    minWidth: '2.1rem',
-    minHeight: '2.1rem',
-    fontSize: '1rem',
+    minWidth: '2.7rem',
+    minHeight: '2.7rem',
+    fontSize: '1.15rem',
     transition: 'background 0.3s',
   }
 }
@@ -132,14 +132,14 @@ function cellBgStyle(moodObj) {
   background: transparent;
 }
 
-/* Smaller calendar grid for compact view */
-.calendar-box-small {
-  width: 420px;
-  height: 340px;
-  max-width: 95vw;
-  max-height: 60vw;
-  min-width: 240px;
-  min-height: 220px;
+/* Medium calendar grid for better fit */
+.calendar-box-medium {
+  width: 560px;
+  height: 420px;
+  max-width: 98vw;
+  max-height: 70vw;
+  min-width: 320px;
+  min-height: 280px;
   box-sizing: border-box;
   background: transparent;
   align-items: center;
