@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-    <div class="bg-white rounded-2xl shadow-xl p-6 max-w-xs w-full mx-4 flex flex-col items-center animate-fade-in-modal">
+  <div class="absolute z-50 left-1/2 top-24 transform -translate-x-1/2 bg-transparent">
+    <div class="bg-white/95 rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border border-pink-200">
       <h2 class="text-xl font-bold mb-4 text-pink-500">Select Month & Year</h2>
       <div class="flex gap-2 mb-4">
         <select v-model="selectedMonth" class="rounded px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
