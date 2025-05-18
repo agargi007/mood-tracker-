@@ -1,6 +1,6 @@
 
 <template>
-  <div class="summer-bg min-h-screen w-full flex flex-col items-center justify-center" style="overflow-x:hidden; overflow-y:hidden;">
+  <div class="summer-bg min-h-screen w-full flex flex-col items-center justify-center overflow-hidden" style="overflow-x:hidden; overflow-y:hidden;">
     <InstructionModal v-if="showInstructions" @close="showInstructions = false" />
     <div class="w-full flex flex-col min-h-screen" v-show="!showInstructions">
       <!-- Page Title -->
