@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full flex flex-col items-center justify-center p-2 md:p-4 animate-fade-in-calendar" style="max-width: 420px; min-width: 280px;">
+  <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 animate-fade-in-calendar">
     <div class="flex items-center justify-center mb-4 gap-4">
       <button @click="prevMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8592;</button>
       <span class="calendar-month-label text-xl md:text-2xl font-bold cursor-pointer select-none" style="font-family: 'Montserrat', 'Quicksand', 'Playfair Display', Arial, sans-serif;" @click="showMonthPicker = true">{{ monthName }} {{ displayYear }}</span>
       <button @click="nextMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8594;</button>
     </div>
     <MonthPicker v-if="showMonthPicker" :month="displayMonth" :year="displayYear" @select="onMonthYearSelect" @close="showMonthPicker = false" />
-    <div class="grid grid-cols-7 gap-1 mx-auto text-center animate-slide-up-calendar calendar-box" style="max-width: 400px; min-width: 260px;">
+    <div class="grid grid-cols-7 gap-1 mx-auto text-center animate-slide-up-calendar calendar-box-small">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
       </div>
@@ -109,18 +109,18 @@ function nextMonth() {
 function cellBgStyle(moodObj) {
   if (!moodObj) {
     return {
-    background: 'rgba(255,255,255,0.85)',
-    minWidth: '2rem',
-    minHeight: '2rem',
-    fontSize: '0.95rem',
+      background: 'rgba(255,255,255,0.85)',
+      minWidth: '2.1rem',
+      minHeight: '2.1rem',
+      fontSize: '1rem',
     }
   }
   let color = moodColors[moodObj.value] || 'rgba(255,255,255,0.85)';
   return {
     background: color,
-    minWidth: '2rem',
-    minHeight: '2rem',
-    fontSize: '0.95rem',
+    minWidth: '2.1rem',
+    minHeight: '2.1rem',
+    fontSize: '1rem',
     transition: 'background 0.3s',
   }
 }
@@ -132,13 +132,13 @@ function cellBgStyle(moodObj) {
   background: transparent;
 }
 
-/* Restrict calendar grid to a smaller box size for compact view */
-.calendar-box {
-  width: 320px;
-  height: 320px;
-  max-width: 100vw;
+/* Smaller calendar grid for compact view */
+.calendar-box-small {
+  width: 420px;
+  height: 340px;
+  max-width: 95vw;
   max-height: 60vw;
-  min-width: 220px;
+  min-width: 240px;
   min-height: 220px;
   box-sizing: border-box;
   background: transparent;
