@@ -1,6 +1,6 @@
 
 <template>
-  <div class="absolute z-50" :style="popupStyle" tabindex="0">
+  <div class="fixed inset-0 z-50 flex items-center justify-center" tabindex="0">
     <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border-2 border-pink-300" style="box-shadow: 0 12px 48px 0 rgba(0,0,0,0.16); background: #fff;">
       <h2 class="text-xl font-bold mb-4 text-pink-500">Select Month & Year</h2>
       <div class="flex gap-2 mb-4">
@@ -47,10 +47,7 @@ function confirm() {
   emit('select', { month: selectedMonth.value, year: selectedYear.value })
   emit('close')
 }
-// Always center the popup in the viewport
-const popupStyle = computed(() => {
-  return 'position: fixed; left: 50vw; top: 50vh; transform: translate(-50%, -50%); z-index: 9999;';
-})
+// No longer needed: popupStyle, as we use flex centering
 </script>
 
 <style scoped>
