@@ -1,21 +1,16 @@
 <template>
   <div class="welcome-summer-bg min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
     <!-- Animated background video effect -->
+    <!-- Animated SVG background with floating shapes -->
     <div class="absolute inset-0 w-full h-full z-0 pointer-events-none">
       <svg class="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;top:0;left:0;z-index:0">
         <defs>
           <radialGradient id="bg1" cx="60%" cy="40%" r="1.2">
-            <stop offset="0%" stop-color="#ffe6e6" stop-opacity="0.8">
-              <animate attributeName="cx" values="60%;40%;60%" dur="12s" repeatCount="indefinite" />
-              <animate attributeName="cy" values="40%;60%;40%" dur="12s" repeatCount="indefinite" />
-            </stop>
+            <stop offset="0%" stop-color="#ffe6e6" stop-opacity="0.8" />
             <stop offset="100%" stop-color="#e6e6ff" stop-opacity="0.7" />
           </radialGradient>
           <radialGradient id="bg2" cx="30%" cy="80%" r="1.1">
-            <stop offset="0%" stop-color="#fffbe6" stop-opacity="0.7">
-              <animate attributeName="cx" values="30%;70%;30%" dur="14s" repeatCount="indefinite" />
-              <animate attributeName="cy" values="80%;20%;80%" dur="14s" repeatCount="indefinite" />
-            </stop>
+            <stop offset="0%" stop-color="#fffbe6" stop-opacity="0.7" />
             <stop offset="100%" stop-color="#e6fff7" stop-opacity="0.6" />
           </radialGradient>
         </defs>
@@ -25,25 +20,39 @@
         <rect width="1920" height="1080" fill="url(#bg2)">
           <animate attributeName="x" values="0;-100;0" dur="20s" repeatCount="indefinite" />
         </rect>
+        <!-- Floating pastel circles -->
+        <circle cx="300" cy="200" r="120" fill="#ffe6e6" opacity="0.5">
+          <animate attributeName="cy" values="200;300;200" dur="8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="1600" cy="400" r="90" fill="#b5ead7" opacity="0.4">
+          <animate attributeName="cy" values="400;500;400" dur="10s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="900" cy="900" r="140" fill="#c9c9ff" opacity="0.35">
+          <animate attributeName="cy" values="900;800;900" dur="12s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="400" cy="900" r="80" fill="#ffdac1" opacity="0.4">
+          <animate attributeName="cy" values="900;950;900" dur="9s" repeatCount="indefinite" />
+        </circle>
       </svg>
     </div>
-    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1 max-w-3xl mx-auto p-6 md:p-12 rounded-3xl bg-white/40 shadow-xl" style="min-height:70vh;">
-      <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
-        style="font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1.1; text-align: center;">
-        Welcome to Mood Tracker
-      </h1>
-      <!-- Animated Emoji Parade (centered, slightly smaller, more visible) -->
-      <div class="emoji-parade flex gap-4 sm:gap-8 md:gap-10 mb-10 md:mb-14 justify-center animate-parade">
-        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2rem, 5vw, 3.5rem); animation-delay:0s">🤩</span>
-        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2rem, 5vw, 3.5rem); animation-delay:0.12s">😊</span>
-        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2rem, 5vw, 3.5rem); animation-delay:0.24s">😐</span>
-        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2rem, 5vw, 3.5rem); animation-delay:0.36s">😢</span>
-        <span class="emoji-item mood-emoji animate-bounce-float" style="font-size: clamp(2rem, 5vw, 3.5rem); animation-delay:0.48s">😡</span>
-      </div>
-      <!-- Animated Button -->
-      <router-link to="/tracker">
-        <button class="welcome-btn px-6 py-3 rounded-2xl bg-pink-400/90 text-white text-xl sm:text-2xl md:text-3xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in">Get Started</button>
-      </router-link>
+    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1" style="min-height:100vh;">
+      <transition name="fade-slide" appear>
+        <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-center animate-gradient-text animate-fade-in"
+          style="font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.1;">
+          Welcome to <span class="text-pink-400 animate-gradient-text">Mood Tracker</span>
+        </h1>
+      </transition>
+      <transition-group name="emoji-float" tag="div" class="emoji-parade flex gap-6 sm:gap-10 md:gap-14 mb-12 md:mb-16 justify-center">
+        <span v-for="(emoji, i) in emojis" :key="emoji" class="emoji-item mood-emoji animate-bounce-float"
+          :style="`font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:${i*0.12}s`">
+          {{ emoji }}
+        </span>
+      </transition-group>
+      <transition name="pop-in" appear>
+        <router-link to="/tracker">
+          <button class="welcome-btn px-8 py-4 rounded-2xl bg-pink-400/90 text-white text-2xl sm:text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in mt-4">Get Started</button>
+        </router-link>
+      </transition>
     </div>
     <!-- Optional: Animated SVG Sparkles -->
     <svg class="absolute left-8 top-8 animate-spin-slow opacity-30 w-24 h-24 text-yellow-300 hidden md:block z-20" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" stroke-dasharray="8 8"/></svg>
@@ -52,8 +61,62 @@
 </template>
 
 <script setup>
-
+import { ref } from 'vue'
+const emojis = ref(['🤩', '😊', '😐', '😢', '😡'])
 </script>
+<style scoped>
+/* Fade-slide for heading */
+.fade-slide-enter-active, .fade-slide-leave-active {
+  transition: all 1.1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(-60px) scale(0.95);
+}
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+}
+
+/* Emoji float animation for parade */
+.emoji-float-enter-active, .emoji-float-leave-active {
+  transition: all 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.emoji-float-enter-from {
+  opacity: 0;
+  transform: translateY(40px) scale(0.8) rotate(-10deg);
+}
+.emoji-float-enter-to {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+.emoji-float-leave-to {
+  opacity: 0;
+  transform: translateY(40px) scale(0.8) rotate(-10deg);
+}
+
+/* Pop-in for button */
+.pop-in-enter-active {
+  transition: all 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.pop-in-enter-from {
+  opacity: 0;
+  transform: scale(0.7);
+}
+.pop-in-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keep drop shadow for emoji */
+.mood-emoji {
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.10));
+}
+</style>
 
 <style scoped>
 /* Font imports are now global in style.css */
