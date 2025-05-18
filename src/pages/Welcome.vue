@@ -35,14 +35,14 @@
         </circle>
       </svg>
     </div>
-    <div class="absolute inset-0 flex flex-col items-center justify-center z-10" style="left:6vw; width:88vw; max-width: 480px; margin: 0 auto;">
+    <div class="absolute inset-0 flex flex-col items-center justify-center z-10" style="left:6vw; width:88vw;">
       <transition name="fade-slide" appear>
-        <h1 class="welcome-title font-display font-extrabold mb-8 md:mb-10 text-center animate-gradient-text animate-fade-in"
-          style="font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.1;">
+        <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-center animate-gradient-text animate-fade-in"
+          style="font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.1;">
           Welcome to <span class="text-pink-400 animate-gradient-text">Mood Tracker</span>
         </h1>
       </transition>
-      <transition-group name="emoji-float" tag="div" class="emoji-parade flex gap-3 sm:gap-5 md:gap-8 mb-8 md:mb-10 justify-center">
+      <transition-group name="emoji-float" tag="div" class="emoji-parade flex gap-6 sm:gap-10 md:gap-14 mb-12 md:mb-16 justify-center">
         <span v-for="(emoji, i) in emojis" :key="emoji" class="emoji-item mood-emoji animate-bounce-float"
           :style="`font-size: clamp(2.5rem, 7vw, 5.5rem); animation-delay:${i*0.12}s`">
           {{ emoji }}
@@ -50,7 +50,7 @@
       </transition-group>
       <transition name="pop-in" appear>
         <router-link to="/tracker">
-          <button class="welcome-btn px-5 py-2 rounded-2xl bg-pink-400/90 text-white text-lg sm:text-xl md:text-2xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in mt-4 mx-auto block">Get Started</button>
+          <button class="welcome-btn px-8 py-4 rounded-2xl bg-pink-400/90 text-white text-2xl sm:text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in mt-4 mx-auto block">Get Started</button>
         </router-link>
       </transition>
     </div>
