@@ -1,7 +1,7 @@
 
 <template>
-  <div class="absolute z-50" :style="popupStyle">
-    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border border-pink-200" style="box-shadow: 0 8px 40px 0 rgba(0,0,0,0.13); background: #fff;">
+  <div class="absolute z-50" :style="popupStyle" tabindex="0">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border-2 border-pink-300" style="box-shadow: 0 12px 48px 0 rgba(0,0,0,0.16); background: #fff;">
       <h2 class="text-xl font-bold mb-4 text-pink-500">Select Month & Year</h2>
       <div class="flex gap-2 mb-4">
         <select v-model="selectedMonth" class="rounded px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
@@ -18,6 +18,17 @@
 </template>
 
 <script setup>
+import { onMounted, onBeforeUnmount } from 'vue'
+// Close modal on Escape key
+function handleKeydown(e) {
+  if (e.key === 'Escape') emit('close')
+}
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 import { ref, watch, defineEmits, defineProps, computed } from 'vue'
 const emit = defineEmits(['select', 'close'])
 const props = defineProps({
@@ -47,21 +58,6 @@ const popupStyle = computed(() => {
   // fallback to center
   return 'left: 50vw; top: 30vh; transform: translate(-50%, 0); z-index: 9999;';
 })
-</script>
-
-<script setup>
-const monthNames = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
-]
-const selectedMonth = ref(props.month ?? new Date().getMonth())
-const selectedYear = ref(props.year ?? new Date().getFullYear())
-watch(() => props.month, val => { if (val !== undefined) selectedMonth.value = val })
-watch(() => props.year, val => { if (val !== undefined) selectedYear.value = val })
-function confirm() {
-  emit('select', { month: selectedMonth.value, year: selectedYear.value })
-  emit('close')
-}
 </script>
 
 <style scoped>
