@@ -47,16 +47,9 @@ function confirm() {
   emit('select', { month: selectedMonth.value, year: selectedYear.value })
   emit('close')
 }
-// Position the popup below the month/year button
+// Always center the popup in the viewport
 const popupStyle = computed(() => {
-  if (typeof window === 'undefined') return '';
-  const btn = document.querySelector('.calendar-month-label')
-  if (btn) {
-    const rect = btn.getBoundingClientRect()
-    return `position: absolute; left: ${rect.left + rect.width/2 + window.scrollX}px; top: ${rect.bottom + 12 + window.scrollY}px; transform: translateX(-50%); z-index: 9999;`;
-  }
-  // fallback to center
-  return 'left: 50vw; top: 30vh; transform: translate(-50%, 0); z-index: 9999;';
+  return 'position: fixed; left: 50vw; top: 50vh; transform: translate(-50%, -50%); z-index: 9999;';
 })
 </script>
 
