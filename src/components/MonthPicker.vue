@@ -1,6 +1,37 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/10">
-    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border border-pink-200" style="box-shadow: 0 8px 40px 0 rgba(0,0,0,0.13);">
+  <div class="absolute z-50" :style="modalStyle">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-xs w-full flex flex-col items-center animate-fade-in-modal border border-pink-200" style="box-shadow: 0 8px 40px 0 rgba(0,0,0,0.13); background: #fff;">
+<script setup>
+import { ref, watch, defineEmits, defineProps, onMounted } from 'vue'
+const emit = defineEmits(['select', 'close'])
+const props = defineProps({
+  month: Number,
+  year: Number,
+  anchor: Object // { top, left, width, height }
+})
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+]
+const selectedMonth = ref(props.month ?? new Date().getMonth())
+const selectedYear = ref(props.year ?? new Date().getFullYear())
+watch(() => props.month, val => { if (val !== undefined) selectedMonth.value = val })
+watch(() => props.year, val => { if (val !== undefined) selectedYear.value = val })
+function confirm() {
+  emit('select', { month: selectedMonth.value, year: selectedYear.value })
+  emit('close')
+}
+
+// Position modal below anchor (month/year button)
+const modalStyle = ref('top: 120px; left: 50%; transform: translateX(-50%);')
+onMounted(() => {
+  if (props.anchor) {
+    // Place modal below anchor, centered horizontally
+    const { top, left, width, height } = props.anchor
+    modalStyle.value = `top: ${top + height + 8}px; left: ${left + width/2}px; transform: translateX(-50%); position: absolute;`;
+  }
+})
+</script>
       <h2 class="text-xl font-bold mb-4 text-pink-500">Select Month & Year</h2>
       <div class="flex gap-2 mb-4">
         <select v-model="selectedMonth" class="rounded px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
