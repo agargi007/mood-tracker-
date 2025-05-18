@@ -14,10 +14,10 @@
             <stop offset="100%" stop-color="#e6fff7" stop-opacity="0.6" />
           </radialGradient>
         </defs>
-        <rect width="1920" height="1080" fill="url(#bg1)">
+        <rect width="2000" height="1100" fill="url(#bg1)">
           <animate attributeName="x" values="0;100;0" dur="18s" repeatCount="indefinite" />
         </rect>
-        <rect width="1920" height="1080" fill="url(#bg2)">
+        <rect width="2000" height="1100" fill="url(#bg2)">
           <animate attributeName="x" values="0;-100;0" dur="20s" repeatCount="indefinite" />
         </rect>
         <!-- Floating pastel circles -->
@@ -156,8 +156,8 @@ const emojis = ref(['🤩', '😊', '😐', '😢', '😡'])
 
 /* Summer Pastel Background */
 .welcome-summer-bg {
-  min-height: 100vh;
-  width: 100vw;
+  min-height:200vh;
+  width: 200vw;
   background-image: url('../assets/pastel-bg-flowers.png');
   background-size: cover;
   background-position: center;
