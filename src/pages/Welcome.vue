@@ -35,7 +35,7 @@
         </circle>
       </svg>
     </div>
-    <div class="absolute inset-0 flex flex-col items-start justify-center z-10 pl-16 md:pl-32">
+    <div class="absolute inset-0 flex flex-col items-center justify-center z-10" style="left:6vw; width:88vw;">
       <transition name="fade-slide" appear>
         <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-center animate-gradient-text animate-fade-in"
           style="font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.1;">
@@ -50,7 +50,7 @@
       </transition-group>
       <transition name="pop-in" appear>
         <router-link to="/tracker">
-          <button class="welcome-btn px-8 py-4 rounded-2xl bg-pink-400/90 text-white text-2xl sm:text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in mt-4">Get Started</button>
+          <button class="welcome-btn px-8 py-4 rounded-2xl bg-pink-400/90 text-white text-2xl sm:text-3xl md:text-4xl font-bold shadow-lg hover:bg-pink-500 transition animate-pop-in mt-4 mx-auto block">Get Started</button>
         </router-link>
       </transition>
     </div>
