@@ -2,6 +2,7 @@
   <div class="summer-bg min-h-screen w-full flex flex-col items-center justify-center transition-colors duration-300">
     <div class="flex flex-col items-center w-full h-full flex-1">
       <EmojiBar @mood-selected="handleMoodSelected" />
+      <div class="h-6 md:h-8"></div> <!-- Spacer between EmojiBar and CalendarGrid -->
       <div class="flex-1 flex flex-col justify-center w-full">
         <CalendarGrid :moods-by-date="moodsByDate" :on-edit="editMoodForDate" :selected-mood="selectedMood" :is-dark="false" />
       </div>

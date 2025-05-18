@@ -1,8 +1,33 @@
 <template>
   <div class="welcome-summer-bg min-h-screen w-screen flex flex-col items-center justify-center relative overflow-hidden" style="overflow-x:hidden; overflow-y:hidden; min-height:100vh; min-width:100vw; height:100vh; width:100vw;">
-    <!-- Animated full-page pastel gradient video effect -->
-    <div class="absolute inset-0 w-full h-full z-0 animated-bg-gradient"></div>
-    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1">
+    <!-- Animated background video effect -->
+    <div class="absolute inset-0 w-full h-full z-0 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;top:0;left:0;z-index:0">
+        <defs>
+          <radialGradient id="bg1" cx="60%" cy="40%" r="1.2">
+            <stop offset="0%" stop-color="#ffe6e6" stop-opacity="0.8">
+              <animate attributeName="cx" values="60%;40%;60%" dur="12s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="40%;60%;40%" dur="12s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stop-color="#e6e6ff" stop-opacity="0.7" />
+          </radialGradient>
+          <radialGradient id="bg2" cx="30%" cy="80%" r="1.1">
+            <stop offset="0%" stop-color="#fffbe6" stop-opacity="0.7">
+              <animate attributeName="cx" values="30%;70%;30%" dur="14s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="80%;20%;80%" dur="14s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stop-color="#e6fff7" stop-opacity="0.6" />
+          </radialGradient>
+        </defs>
+        <rect width="1920" height="1080" fill="url(#bg1)">
+          <animate attributeName="x" values="0;100;0" dur="18s" repeatCount="indefinite" />
+        </rect>
+        <rect width="1920" height="1080" fill="url(#bg2)">
+          <animate attributeName="x" values="0;-100;0" dur="20s" repeatCount="indefinite" />
+        </rect>
+      </svg>
+    </div>
+    <div class="relative z-10 flex flex-col items-center justify-center w-full h-full flex-1" style="min-height:100vh;">
       <h1 class="welcome-title font-display font-extrabold mb-10 md:mb-14 text-gray-800 tracking-tight drop-shadow-lg animate-gradient-text animate-fade-in"
         style="font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 1.1; text-align: center;">
         Welcome to Mood Tracker
@@ -32,24 +57,6 @@
 
 <style scoped>
 /* Font imports are now global in style.css */
-
-/* Animated full-page pastel gradient video effect */
-.animated-bg-gradient {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  background: linear-gradient(120deg, #ffe6e6, #fffbe6, #e6fff7, #e6e6ff, #ffb6b9, #fcdff0, #b5ead7, #c9c9ff, #ffdac1);
-  background-size: 400% 400%;
-  animation: gradient-move-bg 16s ease-in-out infinite alternate;
-  filter: blur(0px) brightness(1.08) saturate(1.1);
-}
-@keyframes gradient-move-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 /* Fade-in animation for heading */
 .animate-fade-in {
