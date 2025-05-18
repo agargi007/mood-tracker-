@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full flex flex-col items-center justify-center p-2 md:p-8 animate-fade-in-calendar">
-    <div ref="monthBtnRow" class="flex items-center justify-center mb-4 gap-4 relative">
+    <div class="flex items-center justify-center mb-4 gap-4">
       <button @click="prevMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8592;</button>
-      <span ref="monthBtn" class="text-xl md:text-2xl font-bold cursor-pointer select-none" style="font-family: 'Montserrat', 'Quicksand', 'Playfair Display', Arial, sans-serif;" @click="openMonthPicker">{{ monthName }} {{ displayYear }}</span>
+      <span class="calendar-month-label text-xl md:text-2xl font-bold cursor-pointer select-none" style="font-family: 'Montserrat', 'Quicksand', 'Playfair Display', Arial, sans-serif;" @click="showMonthPicker = true">{{ monthName }} {{ displayYear }}</span>
       <button @click="nextMonth" class="px-3 py-1 rounded bg-pink-200 text-gray-800 font-semibold shadow hover:bg-pink-300 transition">&#8594;</button>
-      <MonthPicker v-if="showMonthPicker" :month="displayMonth" :year="displayYear" :anchor="monthBtnAnchor" @select="onMonthYearSelect" @close="showMonthPicker = false" />
     </div>
+    <MonthPicker v-if="showMonthPicker" :month="displayMonth" :year="displayYear" @select="onMonthYearSelect" @close="showMonthPicker = false" />
     <div class="grid grid-cols-7 gap-2 mx-auto text-center animate-slide-up-calendar calendar-box">
       <div v-for="day in weekDays" :key="day" class="font-semibold text-gray-500">
         {{ day }}
@@ -40,7 +40,7 @@ const moodColors = {
   angry: '#ff6b6b',    // red
 }
 
-import { computed, toRefs, ref, nextTick } from 'vue'
+import { computed, toRefs, ref } from 'vue'
 import MonthPicker from './MonthPicker.vue'
 const props = defineProps({
   moodsByDate: {
@@ -60,27 +60,9 @@ const currentMonth = today.getMonth()
 const displayYear = ref(currentYear)
 const displayMonth = ref(currentMonth)
 const showMonthPicker = ref(false)
-const monthBtn = ref(null)
-const monthBtnRow = ref(null)
-const monthBtnAnchor = ref(null)
 function onMonthYearSelect({ month, year }) {
   displayMonth.value = month
   displayYear.value = year
-}
-
-function openMonthPicker() {
-  nextTick(() => {
-    if (monthBtn.value) {
-      const rect = monthBtn.value.getBoundingClientRect();
-      monthBtnAnchor.value = {
-        top: rect.top + window.scrollY,
-        left: rect.left + window.scrollX,
-        width: rect.width,
-        height: rect.height
-      };
-    }
-    showMonthPicker.value = true;
-  });
 }
 
 const monthNames = [
